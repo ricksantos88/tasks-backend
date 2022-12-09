@@ -22,7 +22,10 @@ public class TaskController {
 
 	@Autowired
 	private TaskRepo todoRepo;
-	
+	public static final String VALIDATION_EXCEPTION_TO_DESCRIPTION_EMPTY = "Fill the task description";
+	public static final String VALIDATION_EXCEPTION_TO_DUE_DATE_FILL = "Fill the due date";
+	public static final String VALIDATION_EXCEPTION_TO_DUE_DATE_NOT_BE_IN_PAST = "Due date must not be in past";
+
 	@GetMapping
 	public List<Task> findAll() {
 		return todoRepo.findAll();
@@ -31,13 +34,13 @@ public class TaskController {
 	@PostMapping
 	public ResponseEntity<Task> save(@RequestBody Task todo) throws ValidationException {
 		if(todo.getTask() == null || todo.getTask() == "") {
-			throw new ValidationException("Fill the task description");
+			throw new ValidationException(VALIDATION_EXCEPTION_TO_DESCRIPTION_EMPTY);
 		}
 		if(todo.getDueDate() == null) {
-			throw new ValidationException("Fill the due date");
+			throw new ValidationException(VALIDATION_EXCEPTION_TO_DUE_DATE_FILL);
 		}
 		if(!DateUtils.isEqualOrFutureDate(todo.getDueDate())) {
-			throw new ValidationException("Due date must not be in past");
+			throw new ValidationException(VALIDATION_EXCEPTION_TO_DUE_DATE_NOT_BE_IN_PAST);
 		}
 		Task saved = todoRepo.save(todo);
 		return new ResponseEntity<Task>(saved, HttpStatus.CREATED);
