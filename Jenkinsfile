@@ -1,7 +1,8 @@
 pipeline {
     agent any
     tools { 
-      maven 'MAVEN_JENKINS' 
+      maven 'MAVEN_JENKINS'
+      git 'GIT_JENKINS' 
     }
     stages {
         stage('Build backend') {
