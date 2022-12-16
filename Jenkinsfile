@@ -10,7 +10,7 @@ pipeline {
             }
         }
         stage('Unit tests') {
-            step {
+            steps {
                 sh 'mvn test'
             }
         }
