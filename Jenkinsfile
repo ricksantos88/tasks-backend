@@ -37,13 +37,13 @@ pipeline {
                 }
             }
         }
-        stage('Functional test') {
-            steps {
-                dir('functional-test') {
-                    git branch: 'main', credentialsId: 'github-login', url: 'https://github.com/ricksantos88/tasks-funcional-test'
-                    bat 'mvn test'
-                }
-            }
-        }
+        // stage('Functional test') {
+        //     steps {
+        //         dir('functional-test') {
+        //             git branch: 'main', credentialsId: 'github-login', url: 'https://github.com/ricksantos88/tasks-funcional-test'
+        //             bat 'mvn test'
+        //         }
+        //     }
+        // }
     }
 }
