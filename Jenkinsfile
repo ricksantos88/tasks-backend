@@ -46,7 +46,8 @@ pipeline {
     }
     post {
         always {
-            junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml, api-test/target/surefire-reports/*.xml, frontend/target/surefire-reports/*.xml'
+            echo 'deu certo!'
+            // junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml, api-test/target/surefire-reports/*.xml, frontend/target/surefire-reports/*.xml'
         }
     }
 }
